@@ -1,16 +1,14 @@
 import CrewContext from "@/components/CrewContext";
 import { InferGetStaticPropsType } from "next";
-import { useState } from "react";
+import Image from "next/image";
+import usePageManagment from "@/hooks/usePageManagment";
 
 function Crew({ crew }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [selectedCrew, setCrew] = useState<string>("Douglas Hurley");
+  const { pageName, handlePageChange } = usePageManagment({
+    initialPageName: crew[0].name,
+  });
 
-  const handleCrewChange = (crewName: string) => {
-    if (selectedCrew === crewName) return;
-    setCrew(crewName);
-  };
-
-  const crewIndex = crew.findIndex((member) => member.name === selectedCrew);
+  const crewIndex = crew.findIndex((member) => member.name === pageName);
 
   return (
     <main>
@@ -23,23 +21,24 @@ function Crew({ crew }: InferGetStaticPropsType<typeof getStaticProps>) {
           srcSet="/assets/crew/background-crew-tablet.jpg"
           media="(min-width: 640px)"
         />
-        <img
+        <Image
           src="/assets/crew/background-crew-mobile.jpg"
           alt=""
           className="h-full w-full brightness-50"
+          fill={true}
         />
       </picture>
       <h1 className="text-center font-barlowCondensed uppercase tracking-[2.7px] text-white">
         <span className="mr-2 font-bold text-white/25">02</span> Meet your crew
       </h1>
       <div className="flex flex-col">
-        <picture>
-          <img
-            src={crew[crewIndex].image}
-            alt={crew[crewIndex].name}
-            className="mx-auto mt-8 h-56"
-          />
-        </picture>
+        <Image
+          src={crew[crewIndex].image}
+          alt={crew[crewIndex].name}
+          width={180}
+          height={220}
+          className="relative mx-auto mt-8 h-56 w-auto"
+        />
         <div className="mx-auto h-[1px] w-[90%] bg-[#383B4B]" />
 
         <ul className="my-8 flex justify-center gap-5">
@@ -47,9 +46,10 @@ function Crew({ crew }: InferGetStaticPropsType<typeof getStaticProps>) {
             return (
               <li
                 className={`${
-                  selectedCrew === member.name ? "bg-white" : "bg-white/20 "
+                  pageName === member.name ? "bg-white" : "bg-white/20 "
                 } h-3 w-3 cursor-pointer rounded-full hover:bg-white/50`}
-                onClick={() => handleCrewChange(member.name)}
+                onClick={() => handlePageChange(member.name)}
+                key={member.name}
               />
             );
           })}

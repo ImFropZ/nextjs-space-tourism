@@ -1,6 +1,7 @@
 import PlanetContext from "@/components/PlanetContext";
 import { InferGetStaticPropsType } from "next";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Destination({
   planets,
@@ -23,10 +24,11 @@ export default function Destination({
           srcSet="/assets/destination/background-destination-tablet.jpg"
           media="(min-width: 640px)"
         />
-        <img
+        <Image
           src="/assets/destination/background-destination-mobile.jpg"
           alt=""
-          className="h-full w-full brightness-50"
+          className="h-full w-full brightness-75"
+          fill={true}
         />
       </picture>
       <h1 className="text-center font-barlowCondensed text-base uppercase tracking-[2.7px] text-white">

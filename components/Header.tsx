@@ -21,7 +21,7 @@ function Header() {
           alt="Close Icon"
           width={20}
           height={21}
-          className="z-20 h-7 w-7"
+          className="z-20"
           onClick={handleMenu}
         />
       ) : (
@@ -30,7 +30,6 @@ function Header() {
           alt="Hamburger Icon"
           width={24}
           height={21}
-          className="h-6 w-8"
           onClick={handleMenu}
         />
       )}

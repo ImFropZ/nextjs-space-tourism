@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -19,10 +20,11 @@ export default function Home() {
             srcSet="/assets/home/background-home-tablet.jpg"
             media="(min-width: 640px)"
           />
-          <img
+          <Image
             src="/assets/home/background-home-mobile.jpg"
             alt=""
             className="h-full w-full"
+            fill={true}
           />
         </picture>
         <div className="flex flex-col items-center justify-center text-sm text-periwinkle">
