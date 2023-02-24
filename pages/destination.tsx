@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import PlanetContext from "@/components/PlanetContext";
 import { InferGetStaticPropsType } from "next";
 import { useState } from "react";
@@ -27,13 +26,14 @@ export default function Destination({
         <img
           src="/assets/destination/background-destination-mobile.jpg"
           alt=""
-          className="h-full w-full"
+          className="h-full w-full brightness-50"
         />
       </picture>
       <h1 className="text-center font-barlowCondensed text-base uppercase tracking-[2.7px] text-white">
         <span className="mr-2 font-bold opacity-25">01</span> Pick your
         destination
       </h1>
+
       <picture>
         <img
           src={`/assets/destination/image-${selectedPlanet.toLowerCase()}.png`}
@@ -41,47 +41,23 @@ export default function Destination({
           className="mx-auto my-14 h-44 w-44"
         />
       </picture>
+
       <ul className="flex justify-center gap-5 font-barlowCondensed text-sm uppercase tracking-[2.36px] text-white">
-        <li
-          className={`cursor-pointer ${
-            selectedPlanet === "Moon"
-              ? "after:content relative pb-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-white"
-              : "text-periwinkle"
-          }`}
-          onClick={() => handlePlanetChange("Moon")}
-        >
-          Moon
-        </li>
-        <li
-          className={`cursor-pointer ${
-            selectedPlanet === "Mars"
-              ? "after:content relative pb-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-white"
-              : "text-periwinkle"
-          }`}
-          onClick={() => handlePlanetChange("Mars")}
-        >
-          Mars
-        </li>
-        <li
-          className={`cursor-pointer ${
-            selectedPlanet === "Europa"
-              ? "after:content relative pb-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-white"
-              : "text-periwinkle"
-          }`}
-          onClick={() => handlePlanetChange("Europa")}
-        >
-          Europa
-        </li>
-        <li
-          className={`cursor-pointer ${
-            selectedPlanet === "Titan"
-              ? "after:content relative pb-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-white"
-              : "text-periwinkle"
-          }`}
-          onClick={() => handlePlanetChange("Titan")}
-        >
-          Titan
-        </li>
+        {planets.map((planet) => {
+          return (
+            <li
+              key={planet.name}
+              className={`cursor-pointer ${
+                selectedPlanet === planet.name
+                  ? "after:content relative pb-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-white"
+                  : "text-periwinkle"
+              }`}
+              onClick={() => handlePlanetChange(planet.name)}
+            >
+              {planet.name}
+            </li>
+          );
+        })}
       </ul>
 
       {planets.map((planet) => {
