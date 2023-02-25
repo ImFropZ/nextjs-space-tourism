@@ -1,17 +1,14 @@
 import PlanetContext from "@/components/PlanetContext";
 import { InferGetStaticPropsType } from "next";
-import { useState } from "react";
 import Image from "next/image";
+import usePageManagment from "@/hooks/usePageManagment";
 
 export default function Destination({
   planets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [selectedPlanet, setPlanet] = useState("Moon");
-
-  const handlePlanetChange = (planetName: string) => {
-    if (selectedPlanet === planetName) return;
-    setPlanet(planetName);
-  };
+  const { pageName, handlePageChange } = usePageManagment({
+    initialPageName: planets[0].name,
+  });
 
   return (
     <main>
@@ -38,8 +35,8 @@ export default function Destination({
 
       <picture>
         <img
-          src={`/assets/destination/image-${selectedPlanet.toLowerCase()}.png`}
-          alt={selectedPlanet}
+          src={`/assets/destination/image-${pageName.toLowerCase()}.png`}
+          alt={pageName}
           className="mx-auto my-14 h-44 w-44"
         />
       </picture>
@@ -50,11 +47,11 @@ export default function Destination({
             <li
               key={planet.name}
               className={`cursor-pointer ${
-                selectedPlanet === planet.name
+                pageName === planet.name
                   ? "after:content relative pb-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-white"
                   : "text-periwinkle"
               }`}
-              onClick={() => handlePlanetChange(planet.name)}
+              onClick={() => handlePageChange(planet.name)}
             >
               {planet.name}
             </li>
@@ -63,7 +60,7 @@ export default function Destination({
       </ul>
 
       {planets.map((planet) => {
-        if (planet.name === selectedPlanet)
+        if (planet.name === pageName)
           return <PlanetContext {...planet} key={planet.name} />;
       })}
     </main>
