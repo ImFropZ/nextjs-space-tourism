@@ -28,21 +28,21 @@ export default function Home() {
           />
         </picture>
         <div className="flex flex-col items-center justify-center text-sm text-periwinkle">
-          <span className="mt-3 font-barlow text-base uppercase">
+          <span className="mt-3 font-barlow text-base uppercase sm:text-xl tracking-[3.38px]">
             So, you want to travel to
           </span>
-          <h1 className="my-8 text-center font-bellefair text-7xl uppercase text-white">
+          <h1 className="my-8 text-center font-bellefair text-7xl uppercase text-white sm:text-[150px]">
             Space
           </h1>
-          <p className="line-he w-80 text-center font-barlow text-description font-normal">
+          <p className="line-he w-80 text-center font-barlow text-description font-normal sm:text-base sm:w-[440px]">
             Let’s face it; if you want to go to space, you might as well
             genuinely go to outer space and not hover kind of on the edge of it.
             Well sit back, and relax because we’ll give you a truly out of this
             world experience!
           </p>
-          <div className="lg:before:content relative -bottom-20 h-40 w-40 cursor-pointer rounded-full lg:before:absolute lg:before:inset-0 lg:before:scale-100 lg:before:rounded-full lg:before:bg-white/[.1] lg:before:transition-all lg:before:duration-300 lg:hover:before:-inset-14">
+          <div className="lg:before:content relative -bottom-20 h-40 w-40 cursor-pointer rounded-full lg:before:absolute lg:before:inset-0 lg:before:scale-100 lg:before:rounded-full lg:before:bg-white/[.1] lg:before:transition-all lg:before:duration-300 lg:hover:before:-inset-14 sm:h-60 sm:w-60 sm:mt-20">
             <button
-              className="absolute inset-0 w-full cursor-pointer rounded-full bg-white font-bellefair text-xl uppercase tracking-widest text-midnightBlue"
+              className="absolute inset-0 w-full cursor-pointer rounded-full bg-white font-bellefair text-xl uppercase tracking-widest text-midnightBlue sm:text-[2rem]"
               onClick={handleExploreBtn}
             >
               Explore
