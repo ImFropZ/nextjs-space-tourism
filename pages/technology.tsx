@@ -32,10 +32,10 @@ export default function Technology({
           fill={true}
         />
       </picture>
-      <h1 className="text-center font-barlowCondensed text-base uppercase tracking-[2.7px] text-white">
+      <h1 className="text-center font-barlowCondensed text-base uppercase tracking-[2.7px] text-white sm:text-start sm:ml-10 sm:text-xl sm:tracking-[3.38px]">
         <span className="mr-2 font-bold opacity-25">03</span> Space launch 101
       </h1>
-      <div className="relative mx-auto my-5 h-44 w-full sm:h-96 lg:w-44">
+      <div className="relative mx-auto my-5 h-44 w-full sm:h-[19em] sm:w-auto lg:w-44">
         <picture>
           <source
             srcSet={technologies[pageIndex].images.portrait}
@@ -54,11 +54,11 @@ export default function Technology({
             return (
               <li
                 key={technology.name}
-                className={`grid h-10 w-10 cursor-pointer place-items-center rounded-full border ${
+                className={`grid h-10 w-10 sm:h-[2.5em] sm:w-[2.5em] cursor-pointer place-items-center rounded-full border ${
                   technology.name === pageName
                     ? "bg-white"
                     : "border border-white/25 text-white lg:hover:border-white"
-                } font-bellefair`}
+                } font-bellefair sm:text-2xl`}
                 onClick={() => handlePageChange(technology.name)}
               >
                 {index + 1}
