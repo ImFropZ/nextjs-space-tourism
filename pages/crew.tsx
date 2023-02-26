@@ -28,18 +28,18 @@ function Crew({ crew }: InferGetStaticPropsType<typeof getStaticProps>) {
           fill={true}
         />
       </picture>
-      <h1 className="text-center font-barlowCondensed uppercase tracking-[2.7px] text-white">
+      <h1 className="text-center font-barlowCondensed uppercase tracking-[2.7px] text-white sm:text-start sm:ml-10 sm:text-xl sm:tracking-[3.38px]">
         <span className="mr-2 font-bold text-white/25">02</span> Meet your crew
       </h1>
-      <div className="flex flex-col">
+      <div className="flex flex-col sm:flex-col-reverse sm:mt-16">
         <Image
           src={crew[crewIndex].image}
           alt={crew[crewIndex].name}
           width={180}
           height={220}
-          className="relative mx-auto mt-8 h-56 w-auto"
+          className="relative mx-auto mt-8 h-56 w-auto sm:h-[35em]"
         />
-        <div className="mx-auto h-[1px] w-[90%] bg-[#383B4B]" />
+        <div className="mx-auto h-[1px] w-[90%] bg-[#383B4B] sm:hidden" />
 
         <ul className="my-8 flex justify-center gap-5">
           {crew.map((member) => {

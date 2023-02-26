@@ -28,7 +28,7 @@ export default function Home() {
           />
         </picture>
         <div className="flex flex-col items-center justify-center text-sm text-periwinkle">
-          <span className="mt-3 font-barlow text-base uppercase sm:text-xl tracking-[3.38px]">
+          <span className="mt-3 font-barlow text-base uppercase sm:text-xl sm:tracking-[3.38px]">
             So, you want to travel to
           </span>
           <h1 className="my-8 text-center font-bellefair text-7xl uppercase text-white sm:text-[150px]">
