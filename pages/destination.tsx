@@ -39,7 +39,7 @@ export default function Destination({
           alt={pageName}
           height={170}
           width={170}
-          className="mx-auto my-14 sm:h-80 sm:w-80 lg:mx-0"
+          className="mx-auto my-14 sm:h-80 sm:w-80 lg:mx-0 lg:h-[27.75rem] lg:w-[27.75rem]"
         />
         <div>
           <ul className="flex justify-center gap-5 font-barlowCondensed text-sm uppercase tracking-[0.16em] text-white sm:text-base lg:justify-start">
