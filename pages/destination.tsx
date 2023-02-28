@@ -28,41 +28,44 @@ export default function Destination({
           fill={true}
         />
       </picture>
-      <h1 className="text-center font-barlowCondensed text-base uppercase tracking-[2.7px] text-white sm:text-start sm:ml-10 sm:text-xl sm:tracking-[3.38px]">
+      <h1 className="text-center font-barlowCondensed text-base uppercase tracking-[2.7px] text-white sm:text-start sm:ml-10 sm:text-xl sm:tracking-[3.38px] lg:text-[1.75rem] lg:pl-32 lg:my-10 lg:tracking-[4.72px]">
         <span className="mr-2 font-bold opacity-25">01</span> Pick your
         destination
       </h1>
 
-      <Image
-        src={`/assets/destination/image-${pageName.toLowerCase()}.png`}
-        alt={pageName}
-        height={170}
-        width={170}
-        className="mx-auto my-14 sm:h-80 sm:w-80"
-      />
+      <div className="flex flex-col lg:flex-row lg:justify-center lg:gap-52">
+        <Image
+          src={`/assets/destination/image-${pageName.toLowerCase()}.png`}
+          alt={pageName}
+          height={170}
+          width={170}
+          className="mx-auto my-14 sm:h-80 sm:w-80 lg:mx-0"
+        />
+        <div>
+          <ul className="flex justify-center gap-5 font-barlowCondensed text-sm uppercase tracking-[0.16em] text-white sm:text-base lg:justify-start">
+            {planets.map((planet) => {
+              return (
+                <li
+                  key={planet.name}
+                  className={`cursor-pointer ${
+                    pageName === planet.name
+                      ? "after:content relative pb-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-white after:text-base"
+                      : "text-periwinkle"
+                  }`}
+                  onClick={() => handlePageChange(planet.name)}
+                >
+                  {planet.name}
+                </li>
+              );
+            })}
+          </ul>
 
-      <ul className="flex justify-center gap-5 font-barlowCondensed text-sm uppercase tracking-[0.16em] text-white sm:text-base ">
-        {planets.map((planet) => {
-          return (
-            <li
-              key={planet.name}
-              className={`cursor-pointer ${
-                pageName === planet.name
-                  ? "after:content relative pb-3 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-white after:text-base"
-                  : "text-periwinkle"
-              }`}
-              onClick={() => handlePageChange(planet.name)}
-            >
-              {planet.name}
-            </li>
-          );
-        })}
-      </ul>
-
-      {planets.map((planet) => {
-        if (planet.name === pageName)
-          return <PlanetContext {...planet} key={planet.name} />;
-      })}
+          {planets.map((planet) => {
+            if (planet.name === pageName)
+              return <PlanetContext {...planet} key={planet.name} />;
+          })}
+        </div>
+      </div>
     </main>
   );
 }
