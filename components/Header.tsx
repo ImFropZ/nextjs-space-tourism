@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 function Header() {
-  const [isMenuOpen, setMenuOpen] = useState<boolean>(true);
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
   const router = useRouter();
 
   const handleMenu = () => {
