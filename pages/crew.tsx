@@ -28,33 +28,35 @@ function Crew({ crew }: InferGetStaticPropsType<typeof getStaticProps>) {
           fill={true}
         />
       </picture>
-      <h1 className="text-center font-barlowCondensed uppercase tracking-[2.7px] text-white sm:text-start sm:ml-10 sm:text-xl sm:tracking-[3.38px]">
+      <h1 className="text-center font-barlowCondensed uppercase tracking-[2.7px] text-white sm:text-start sm:ml-10 sm:text-xl sm:tracking-[3.38px] lg:text-[1.75rem] lg:pl-32 lg:my-10 lg:tracking-[4.72px]">
         <span className="mr-2 font-bold text-white/25">02</span> Meet your crew
       </h1>
-      <div className="flex flex-col sm:flex-col-reverse sm:mt-16">
+      <div className="flex flex-col sm:flex-col-reverse sm:mt-16 lg:flex-row">
         <Image
           src={crew[crewIndex].image}
           alt={crew[crewIndex].name}
           width={180}
           height={220}
-          className="relative mx-auto mt-8 h-56 w-auto sm:h-[35em]"
+          className="relative mx-auto mt-8 h-56 w-auto sm:h-[35rem] lg:h-[44.5rem] lg:fixed lg:bottom-0 lg:right-0 lg:-translate-x-1/3"
         />
         <div className="mx-auto h-[1px] w-[90%] bg-[#383B4B] sm:hidden" />
 
-        <ul className="my-8 flex justify-center gap-5">
-          {crew.map((member) => {
-            return (
-              <li
-                className={`${
-                  pageName === member.name ? "bg-white" : "bg-white/20 "
-                } h-3 w-3 cursor-pointer rounded-full hover:bg-white/50`}
-                onClick={() => handlePageChange(member.name)}
-                key={member.name}
-              />
-            );
-          })}
-        </ul>
-        <CrewContext {...crew[crewIndex]} key={crew[crewIndex].name} />
+        <div className="lg:flex lg:flex-col-reverse lg:ml-40">
+          <ul className="my-8 flex justify-center gap-5 lg:self-start lg:absolute lg:bottom-20">
+            {crew.map((member) => {
+              return (
+                <li
+                  className={`${
+                    pageName === member.name ? "bg-white" : "bg-white/20 "
+                  } h-3 w-3 cursor-pointer rounded-full hover:bg-white/50 lg:h-4 lg:w-4`}
+                  onClick={() => handlePageChange(member.name)}
+                  key={member.name}
+                />
+              );
+            })}
+          </ul>
+          <CrewContext {...crew[crewIndex]} key={crew[crewIndex].name} />
+        </div>
       </div>
     </main>
   );
