@@ -32,41 +32,43 @@ export default function Technology({
           fill={true}
         />
       </picture>
-      <h1 className="text-center font-barlowCondensed text-base uppercase tracking-[2.7px] text-white sm:text-start sm:ml-10 sm:text-xl sm:tracking-[3.38px]">
+      <h1 className="text-center font-barlowCondensed text-base uppercase tracking-[2.7px] text-white sm:text-start sm:ml-10 sm:text-xl sm:tracking-[3.38px] lg:text-[1.75rem] lg:pl-32 lg:my-10 lg:tracking-[4.72px]">
         <span className="mr-2 font-bold opacity-25">03</span> Space launch 101
       </h1>
-      <div className="relative mx-auto my-5 h-44 w-full sm:h-[19em] sm:w-auto lg:w-44">
-        <picture>
-          <source
-            srcSet={technologies[pageIndex].images.portrait}
-            media="(min-width: 1024px)"
-          />
-          <Image
-            src={technologies[pageIndex].images.landscape}
-            alt="Launch vehicle"
-            fill={true}
-          />
-        </picture>
-      </div>
-      <div>
-        <ul className="my-10 flex justify-center gap-5">
-          {technologies.map((technology, index) => {
-            return (
-              <li
-                key={technology.name}
-                className={`grid h-10 w-10 sm:h-[2.5em] sm:w-[2.5em] cursor-pointer place-items-center rounded-full border ${
-                  technology.name === pageName
-                    ? "bg-white"
-                    : "border border-white/25 text-white lg:hover:border-white"
-                } font-bellefair sm:text-2xl`}
-                onClick={() => handlePageChange(technology.name)}
-              >
-                {index + 1}
-              </li>
-            );
-          })}
-        </ul>
-        <TechnologyContext {...technologies[pageIndex]} />
+      <div className="lg:flex lg:flex-row-reverse lg:justify-center lg:items-center lg:pl-40 lg:gap-10 lg:max-w-[90rem] lg:mx-auto">
+        <div className="relative mx-auto my-5 h-44 w-full sm:h-[19em] sm:w-auto lg:h-[33rem] lg:w-[30rem] lg:mx-0 lg:ml-auto">
+          <picture>
+            <source
+              srcSet={technologies[pageIndex].images.portrait}
+              media="(min-width: 1024px)"
+            />
+            <Image
+              src={technologies[pageIndex].images.landscape}
+              alt="Launch vehicle"
+              fill={true}
+            />
+          </picture>
+        </div>
+        <div className="lg:flex lg:items-start lg:gap-20">
+          <ul className="my-10 flex justify-center gap-5 lg:flex-col lg:my-0">
+            {technologies.map((technology, index) => {
+              return (
+                <li
+                  key={technology.name}
+                  className={`grid h-10 w-10 sm:h-[2.5em] sm:w-[2.5em] cursor-pointer place-items-center rounded-full border ${
+                    technology.name === pageName
+                      ? "bg-white"
+                      : "border border-white/25 text-white lg:hover:border-white"
+                  } font-bellefair sm:text-2xl lg:h-[5rem] lg:w-[5rem]`}
+                  onClick={() => handlePageChange(technology.name)}
+                >
+                  {index + 1}
+                </li>
+              );
+            })}
+          </ul>
+          <TechnologyContext {...technologies[pageIndex]} />
+        </div>
       </div>
     </main>
   );
